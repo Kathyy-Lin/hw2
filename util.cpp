@@ -14,16 +14,47 @@ std::string convToLower(std::string src)
 /** Complete the code to convert a string containing a rawWord
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
-{
-
-
-
-
-
-
-
-
-
+{ //check for case insesitive words
+    set<std::string> keyWords;
+    string temp;
+    for (unsigned int i = 0; i < rawWords.length(); i++){
+      if (ispunct(rawWords[i]) || isspace(rawWords[i])){ //if i encounter a punctuation or space
+        if (temp.length() >= 2){
+          temp = convToLower(temp);
+          keyWords.insert(temp);
+        }
+        temp.clear();
+      }
+      else {
+        temp += rawWords[i];
+      }
+    }
+    if(temp.length() >= 2) {
+      temp = convToLower(temp);
+      keyWords.insert(temp);
+    }
+    return keyWords;
+/*
+    stringstream ss(rawWords);
+    string eachWord;
+    //check for a-z
+    //isalpha()
+    while (ss >> eachWord) { //splits each word
+        string temp;
+        for (int i = 0; i < eachWord.length(); i++){
+            if (ispunct(eachWord[i])){ //if there is punct in word
+                if (eachWord.substr(0,i+1).length >= 2){
+                    keyWords.insert(eachWord.substr(0,i+1));
+                }
+                else if (eachWord.substr(i).length >= 2){
+                    keyWords.insert(eachWord.substr(i));
+                }
+            }
+      keyWords.insert(eachWord); //add if no punct
+      } 
+    }*/
+ //substr to get ech word
+ //ispunct - to check which char is a punct
 
 }
 
