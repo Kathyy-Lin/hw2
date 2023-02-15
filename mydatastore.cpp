@@ -108,7 +108,8 @@ void MyDataStore::addToCart(std::string username, Product* p)
 {
 //check if valid user, then add items to their cart
   if (allUsers_.find(username) == allUsers_.end()){ 
-    cout << "Invalid Username" << endl;
+    cout << "Invalid request" << endl;
+    return;
   }
   //do i have to check if it is a valid product
   else{
@@ -116,9 +117,9 @@ void MyDataStore::addToCart(std::string username, Product* p)
     //map<string, vector<Product*>>::iterator it;
     //for (int i = ; it!=carts_.end(); ++it){
       //go into username's cart
-      cout <<"before"<< carts_[username].size();
+      //cout <<"before"<< carts_[username].size();
       carts_[username].push_back(p);
-      cout << "after" << carts_[username].size();
+      //cout << "after" << carts_[username].size();
   }
 }
 
@@ -132,12 +133,12 @@ void MyDataStore::viewCart(std::string username)
     //display user, iterate through cart and dump each product
     //map<string, vector<Product*>>::iterator it;
     //for (it = carts_.begin(); it!=carts_.end(); it++){
-      cout << "here";
+      //cout << "here";
         vector<Product*> totalProducts = carts_[username];
         //vector<Product*>::iterator it1;
-        cout << totalProducts.size();
+        //cout << totalProducts.size();
         for (unsigned int i = 0; i < totalProducts.size(); i++){
-          cout << totalProducts[i]->displayString() << endl;
+          cout << "Item " << i+1 << "\n" <<totalProducts[i]->displayString() << endl;
         }
       }
   
